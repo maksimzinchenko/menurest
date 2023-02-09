@@ -1,0 +1,46 @@
+git init .
+touch .gitignore add venv to init
+python3 installed on pc
+python -m venv venv
+select venv python env in VSCode
+create new repo on github
+git remote add origin git@github.com:....
+git branch -M master
+git push -u origin master
+
+
+.\venv\Scripts\Activate.ps1 - for windows ps
+
+Install FastAPI
+pip install fastapi
+
+Install Uvicorn async http server
+pip install "uvicorn[standard]"
+
+create src folder for project source code
+
+demo:
+create main.py
+fill wil simple test code of async version:
+from typing import Union
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
+
+to run it:
+uvicorn main:app --reload
+
+check on:
+http://127.0.0.1:8000/ will show Hello, World
+http://127.0.0.1:8000/items/5?q=somequery will show {"item_id":5,"q":"somequery"}
