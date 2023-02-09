@@ -44,3 +44,7 @@ uvicorn main:app --reload
 check on:
 http://127.0.0.1:8000/ will show Hello, World
 http://127.0.0.1:8000/items/5?q=somequery will show {"item_id":5,"q":"somequery"}
+
+ http://127.0.0.1:8000/docs - API __doc__
+or 
+ http://127.0.0.1:8000/redoc
