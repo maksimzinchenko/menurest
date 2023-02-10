@@ -23,6 +23,9 @@ menu_items: List[MenuItem] = [
     {'id': '5abc49cd-f1e3-470e-8d0f-670b09d16cac', 'name': 'Meal 5', 'price': 5, 'is_active': True, 'order': 1},
     {'id': '4472f08c-9c9a-4902-83aa-1247188c7eb8', 'name': 'Meal 6', 'price': 15, 'is_active': True, 'order': 1},
     {'id': 'dc74415a-38b0-418e-bd0d-af95a4c02004', 'name': 'Meal 7', 'price': 0.5, 'is_active': True, 'order': 1},
+    {'id': '7abc49cd-f1e3-470e-8d0f-670b09d16cac', 'name': 'Meal 5', 'price': 5, 'is_active': True, 'order': 1},
+    {'id': '4478f08c-9c9a-4902-83aa-1247188c7eb8', 'name': 'Meal 6', 'price': 15, 'is_active': True, 'order': 1},
+    {'id': 'dc74419a-38b0-418e-bd0d-af95a4c02004', 'name': 'Meal 7', 'price': 0.5, 'is_active': True, 'order': 1},
 ]
 
 
@@ -33,7 +36,7 @@ async def read_root():
 
 
 @app.get("/menu_items/")
-async def read_items(skip: int = 0, limit: int = 3):
+async def read_items(skip: int = 0, limit: int = 10):
     return menu_items[skip: limit]
 
 

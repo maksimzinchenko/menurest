@@ -48,3 +48,8 @@ http://127.0.0.1:8000/items/5?q=somequery will show {"item_id":5,"q":"somequery"
  http://127.0.0.1:8000/docs - API __doc__
 or 
  http://127.0.0.1:8000/redoc
+
+
+Docker 
+docker build -t menu10 .
+docker run -d --name menu10 -p 80:80 menu10
