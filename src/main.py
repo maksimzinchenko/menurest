@@ -44,8 +44,6 @@ async def read_item(id: str):
 
 @app.post("/menu_items/")
 async def post_item(item: MenuItem):
-    #item.id = item.id()
-    print(item)
     menu_items.append(item)
     return item
 
