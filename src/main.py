@@ -1,12 +1,12 @@
 from typing import Union, List
 from fastapi import FastAPI
-from pydantic import BaseModel
-import uuid
+from pydantic import BaseModel, Field
+from uuid import UUID, uuid4
 
 app = FastAPI()
 
 class MenuItem(BaseModel):
-    id: str = uuid.uuid4()
+    id: UUID = Field(default_factory=uuid4)
     name: str = 'Meal name'
     description: str = ''
     image: str = 'none.jpg'
@@ -23,9 +23,6 @@ menu_items: List[MenuItem] = [
     {'id': '5abc49cd-f1e3-470e-8d0f-670b09d16cac', 'name': 'Meal 5', 'price': 5, 'is_active': True, 'order': 1},
     {'id': '4472f08c-9c9a-4902-83aa-1247188c7eb8', 'name': 'Meal 6', 'price': 15, 'is_active': True, 'order': 1},
     {'id': 'dc74415a-38b0-418e-bd0d-af95a4c02004', 'name': 'Meal 7', 'price': 0.5, 'is_active': True, 'order': 1},
-    {'id': '7abc49cd-f1e3-470e-8d0f-670b09d16cac', 'name': 'Meal 5', 'price': 5, 'is_active': True, 'order': 1},
-    {'id': '4478f08c-9c9a-4902-83aa-1247188c7eb8', 'name': 'Meal 6', 'price': 15, 'is_active': True, 'order': 1},
-    {'id': 'dc74419a-38b0-418e-bd0d-af95a4c02004', 'name': 'Meal 7', 'price': 0.5, 'is_active': True, 'order': 1},
 ]
 
 
@@ -47,6 +44,8 @@ async def read_item(id: str):
 
 @app.post("/menu_items/")
 async def post_item(item: MenuItem):
+    #item.id = item.id()
+    print(item)
     menu_items.append(item)
     return item
 
